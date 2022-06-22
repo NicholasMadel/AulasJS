@@ -1,0 +1,8 @@
+.new-font-color{
+    color:brown;
+}
+
+.bigger{
+    transform: scale(2) translateX(50px);
+    
+}
