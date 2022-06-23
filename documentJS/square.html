@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Square</title>
+
+    <link rel="stylesheet" href="square.css">
+
+</head>
+<body>
+
+    
+   
+    
+    <div onclick="changeColor()" class="square"></div>
+
+
+    <script>
+        function changeCircle(){
+            let square= document.querySelector(".square")
+            square.classList.toggle("circle")
+        }
+        let i = 0;
+        let colors = ["yellow", "purple", "cyan", "pink", "grey"]
+        function changeColor(){
+            document.querySelector(".square").style.backgroundColor = colors [i]
+            i == 4 ? i = 0 : i++
+        }
+    </script>
+    
+</body>
+</html>
