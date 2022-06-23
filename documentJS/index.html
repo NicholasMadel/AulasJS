@@ -16,10 +16,15 @@
         <p id="p2" class="text">oi2</p>
         <p id="p3" class="text">oi3</p>
         <p id="p4" class="text">oi4</p>
+        <p id="p5" class="text">oi5</p>
     </div>
 
+    <div class="square"></div>
+    <br>
     <button onclick="changeColor()" class="change-color">Mudar Cor</button>
     <button onclick="turnBigger()" class="turn-bigger">Aumentar tamanho</button>
+    <button onclick="turnSmall()" class="turn-small">Diminuir tamanho</button>
+    
     
     <script>
         document.querySelector(".teste").style.color="blue"
@@ -35,6 +40,14 @@
             let text4 = document.querySelector("#p4")
             text4.classList.toggle("bigger")
         }
+
+        function turnSmall(){
+            let text5 = document.querySelector("#p5")
+            text5.classList.toggle("small")
+            text5.document.toggle("new-font-color")
+        }
+
+        
 
     </script>
 
