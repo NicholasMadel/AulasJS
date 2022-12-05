@@ -1,0 +1,66 @@
+import './App.css';
+import { useForm } from 'react-hook-form';
+import React, { useState, useEffect } from 'react';
+
+
+function App() {
+
+  const { register, handleSubmit, setValue, setFocus } = useForm(); //hook para manipulação do checkCEP
+
+  // const getInput = document.querySelectorAll('input').onClick
+  // console.log(getInput)
+
+
+
+  const onSubmit = (e) => {
+    console.log(e);
+  }
+
+  const checkCEP = (e) => {
+    const cep = e.target.value.replace(/\D/g, '');
+    console.log(cep);
+    fetch(`https://viacep.com.br/ws/${cep}/json/`).then(res => res.json()).then(data => {
+      // console.log(data);
+      setValue('uf', data.uf);
+      setValue('localidade', data.localidade);
+      setValue('bairro', data.bairro);
+      setValue('logradouro', data.logradouro);
+      setFocus('numero')
+    })
+  }
+
+  const input = '' ? false : true; //readOnly
+  
+  return (
+
+    <form className="container" onSubmit={handleSubmit(onSubmit)}> 
+      <div className='menu' >
+        <h4>Nome Completo:</h4>
+        <input />
+        <h4>E-mail:</h4>  
+        <input /> 
+        <h4>CEP:</h4>
+        <input  {...register('cep')} onBlur={checkCEP} />  
+        <h4>UF:</h4>
+        <input type='text' {...register('uf')} readOnly/>
+        <h4>Localidade:</h4>
+        <input {...register('localidade')} readOnly />
+        <h4>Bairro:</h4>
+        <input  {...register('bairro')} readOnly />
+        <h4>Logradouro:</h4>
+        <input {...register('logradouro')} readOnly />
+        <h4>Número de Endereço:</h4>
+        <input  {...register('numero')}/>
+        <h4>Complemento:</h4>
+        <input />
+        <h4>Data Entrega:</h4>
+        <input type='date' />
+      </div>
+      <button type="submit">Enviar</button>
+      <button>Limpar</button>
+    </form>
+
+  );
+}
+ 
+export default App;
